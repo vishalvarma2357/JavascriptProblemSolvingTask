@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Traffic Light System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffcc00;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: auto;
+        }
+        select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #ff6600;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #cc5500;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Traffic Light System</h1>
+        <label for="trafficDensity">Select Traffic Density:</label>
+        <select id="trafficDensity">
+            <option value="Heavy Traffic">Heavy Traffic</option>
+            <option value="Moderate Traffic">Moderate Traffic</option>
+            <option value="Light Traffic">Light Traffic</option>
+        </select>
+        <button onclick="trafficLightControl()">Check Signal Time</button>
+        <p class="result" id="result"></p>
+    </div>
+    
+    <script>
+        function trafficLightControl() {
+            let density = document.getElementById('trafficDensity').value;
+            let time;
+            
+            if (density === "Heavy Traffic") {
+                time = 60;
+            } else if (density === "Moderate Traffic") {
+                time = 40;
+            } else {
+                time = 20;
+            }
+            
+            document.getElementById('result').textContent = `Green Light Duration: ${time} seconds`;
+        }
+    </script>
+</body>
+</html>

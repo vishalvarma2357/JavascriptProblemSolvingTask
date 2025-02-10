@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grading System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #7c6af1;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            color: black;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #8a2be2;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #5d1aa6;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #8a2be2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Grading System</h1>
+        <input type="number" id="marks" placeholder="Enter Marks" min="0" max="100">
+        <input type="number" id="attendance" placeholder="Enter Attendance %" min="0" max="100">
+        <button onclick="calculateGrade()">Calculate Grade</button>
+        <p class="result" id="result"></p>
+    </div>
+    
+    <script>
+        function calculateGrade() {
+            let marks = parseFloat(document.getElementById('marks').value);
+            let attendance = parseFloat(document.getElementById('attendance').value);
+            
+            if (isNaN(marks) || isNaN(attendance) || marks < 0 || marks > 100 || attendance < 0 || attendance > 100) {
+                document.getElementById('result').textContent = "Please enter valid marks and attendance.";
+                return;
+            }
+            
+            if (attendance > 90) {
+                marks += 5;
+                if (marks > 100) marks = 100; // Ensure max is 100
+            }
+            
+            let grade;
+            if (marks >= 90) grade = "A";
+            else if (marks >= 80) grade = "B";
+            else if (marks >= 70) grade = "C";
+            else if (marks >= 60) grade = "D";
+            else grade = "F";
+            
+            document.getElementById('result').textContent = `Final Grade: ${grade}`;
+        }
+    </script>
+</body>
+</html>

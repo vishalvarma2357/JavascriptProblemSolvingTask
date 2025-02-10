@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #72dc7e;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            color: black;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #1c7943;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Application Filter</h1>
+        <input type="number" id="age" placeholder="Enter Your Age" min="18">
+        <input type="number" id="experience" placeholder="Years of Experience" min="0">
+        <select id="qualification">
+            <option value="High School">High School</option>
+            <option value="Bachelor's Degree">Bachelor's Degree</option>
+            <option value="Master's Degree">Master's Degree</option>
+        </select>
+        <button onclick="isEligibleForJob()">Check Eligibility</button>
+        <p class="result" id="result"></p>
+    </div>
+    
+    <script>
+        function isEligibleForJob() {
+            let age = parseInt(document.getElementById('age').value);
+            let experience = parseInt(document.getElementById('experience').value);
+            let qualification = document.getElementById('qualification').value;
+            
+            if (isNaN(age) || isNaN(experience)) {
+                document.getElementById('result').textContent = "Please enter valid details.";
+                return;
+            }
+            
+            if (age >= 21 && age <= 55 && experience >= 2 && qualification === "Bachelor's Degree") {
+                document.getElementById('result').textContent = "You are eligible for the job!";
+            } else {
+                document.getElementById('result').textContent = "Sorry, you do not meet the requirements.";
+            }
+        }
+    </script>
+</body>
+</html>

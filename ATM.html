@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Withdrawal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #b6ddf9 ;
+            padding: 10px;
+            
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ATM Withdrawal</h1>
+        <input type="password" id="pin" placeholder="Set PIN">
+        <input type="password" id="enteredPin" placeholder="Enter PIN">
+        <input type="number" id="balance" placeholder="Enter Balance">
+        <input type="number" id="amount" placeholder="Enter Amount">
+        <button onclick="atmWithdrawal()">Withdraw</button>
+        <p id="result"></p>
+    </div>
+    
+    <script>
+        function atmWithdrawal() {
+            let pin = document.getElementById('pin').value;
+            let enteredPin = document.getElementById('enteredPin').value;
+            let balance = parseFloat(document.getElementById('balance').value);
+            let amount = parseFloat(document.getElementById('amount').value);
+            let result = document.getElementById('result');
+            
+            if (enteredPin !== pin) {
+                result.textContent = "Incorrect PIN";
+                return;
+            }
+            if (amount > balance) {
+                result.textContent = "Insufficient Funds";
+                return;
+            }
+            if (amount % 100 !== 0) {
+                result.textContent = "Enter amount in multiples of 100";
+                return;
+            }
+            
+            result.textContent = `Withdrawal successful! Remaining balance: $${balance - amount}`;
+        }
+    </script>
+</body>
+</html>

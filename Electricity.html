@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ef8631;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            color: black;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #e74c3c;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Electricity Bill Calculation</h1>
+        <input type="number" id="units" placeholder="Enter Units Consumed" min="0">
+        <select id="timeOfDay">
+            <option value="Normal">Normal Hours (8 AM - 8 PM)</option>
+            <option value="Peak">Peak Hours (8 PM - 8 AM)</option>
+        </select>
+        <button onclick="calculateBill()">Calculate Bill</button>
+        <p class="result" id="result"></p>
+    </div>
+    
+    <script>
+        function calculateBill() {
+            let units = parseFloat(document.getElementById('units').value);
+            let timeOfDay = document.getElementById('timeOfDay').value;
+            
+            if (isNaN(units) || units < 0) {
+                document.getElementById('result').textContent = "Please enter a valid number of units.";
+                return;
+            }
+            
+            let rate = 5;
+            if (units > 100) rate = 4;
+            if (units > 300) rate = 3;
+            
+            let totalCost = units * rate;
+            
+            if (timeOfDay === "Peak") {
+                totalCost *= 1.10; // 10% extra charge during peak hours
+            }
+            
+            document.getElementById('result').textContent = `Total Bill: $${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

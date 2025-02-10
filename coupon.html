@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Coupon Redemption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #2980b9;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            color: black;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #e67e22;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #d35400;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>E-commerce Coupon Redemption</h1>
+        <input type="number" id="orderAmount" placeholder="Enter Order Amount" min="0">
+        <select id="couponCode">
+            <option value="None">None</option>
+            <option value="DISCOUNT10">DISCOUNT10 (10% off on $500+)</option>
+            <option value="FREESHIP">FREESHIP (Free shipping on $200+)</option>
+        </select>
+        <button onclick="applyCoupon()">Apply Coupon</button>
+        <p class="result" id="result"></p>
+    </div>
+    
+    <script>
+        function applyCoupon() {
+            let orderAmount = parseFloat(document.getElementById('orderAmount').value);
+            let couponCode = document.getElementById('couponCode').value;
+            
+            if (isNaN(orderAmount) || orderAmount < 0) {
+                document.getElementById('result').textContent = "Please enter a valid order amount.";
+                return;
+            }
+            
+            let discount = 0;
+            let shippingCost = 0;
+            
+            if (couponCode === "DISCOUNT10" && orderAmount > 500) {
+                discount = orderAmount * 0.10;
+            } else if (couponCode === "FREESHIP" && orderAmount > 200) {
+                shippingCost = 0;
+            } else if (orderAmount < 50) {
+                shippingCost = 10; // Express shipping for low orders
+            }
+            
+            let finalAmount = orderAmount - discount + shippingCost;
+            document.getElementById('result').textContent = `Final Price: $${finalAmount.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

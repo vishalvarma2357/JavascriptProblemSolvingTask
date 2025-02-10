@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Membership Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #cf15b6;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            color: black;
+        }
+        select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #e74c3c;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fitness Membership Plan</h1>
+        <select id="planType">
+            <option value="Basic">Basic ($20/month)</option>
+            <option value="Premium">Premium ($50/month)</option>
+            <option value="VIP">VIP ($80/month)</option>
+        </select>
+        <label><input type="checkbox" id="trainer"> Want Personal Trainer</label>
+        <label><input type="checkbox" id="diet"> Want Diet Plan</label>
+        <button onclick="choosePlan()">Get Best Plan</button>
+        <p class="result" id="result"></p>
+    </div>
+    
+    <script>
+        function choosePlan() {
+            let planType = document.getElementById('planType').value;
+            let wantsTrainer = document.getElementById('trainer').checked;
+            let wantsDietPlan = document.getElementById('diet').checked;
+            let bestPlan = "Basic ($20/month)";
+            
+            if (wantsTrainer && wantsDietPlan) {
+                bestPlan = "VIP ($80/month)";
+            } else if (wantsTrainer) {
+                bestPlan = "Premium ($50/month)";
+            } else if (wantsDietPlan) {
+                bestPlan = "VIP ($80/month)"; // VIP includes diet plan
+            } else {
+                bestPlan = planType;
+            }
+            
+            document.getElementById('result').textContent = `Best Plan for You: ${bestPlan}`;
+        }
+    </script>
+</body>
+</html>
