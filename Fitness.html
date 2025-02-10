@@ -61,25 +61,6 @@
         <p class="result" id="result"></p>
     </div>
     
-    <script>
-        function choosePlan() {
-            let planType = document.getElementById('planType').value;
-            let wantsTrainer = document.getElementById('trainer').checked;
-            let wantsDietPlan = document.getElementById('diet').checked;
-            let bestPlan = "Basic ($20/month)";
-            
-            if (wantsTrainer && wantsDietPlan) {
-                bestPlan = "VIP ($80/month)";
-            } else if (wantsTrainer) {
-                bestPlan = "Premium ($50/month)";
-            } else if (wantsDietPlan) {
-                bestPlan = "VIP ($80/month)"; // VIP includes diet plan
-            } else {
-                bestPlan = planType;
-            }
-            
-            document.getElementById('result').textContent = `Best Plan for You: ${bestPlan}`;
-        }
-    </script>
+    
 </body>
 </html>

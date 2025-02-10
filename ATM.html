@@ -50,29 +50,5 @@
         <p id="result"></p>
     </div>
     
-    <script>
-        function atmWithdrawal() {
-            let pin = document.getElementById('pin').value;
-            let enteredPin = document.getElementById('enteredPin').value;
-            let balance = parseFloat(document.getElementById('balance').value);
-            let amount = parseFloat(document.getElementById('amount').value);
-            let result = document.getElementById('result');
-            
-            if (enteredPin !== pin) {
-                result.textContent = "Incorrect PIN";
-                return;
-            }
-            if (amount > balance) {
-                result.textContent = "Insufficient Funds";
-                return;
-            }
-            if (amount % 100 !== 0) {
-                result.textContent = "Enter amount in multiples of 100";
-                return;
-            }
-            
-            result.textContent = `Withdrawal successful! Remaining balance: $${balance - amount}`;
-        }
-    </script>
 </body>
 </html>

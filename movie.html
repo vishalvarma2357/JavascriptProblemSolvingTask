@@ -56,30 +56,6 @@
         <p class="result" id="result"></p>
     </div>
     
-    <script>
-        function calculateTicketPrice() {
-            let age = parseInt(document.getElementById('age').value);
-            let showTime = document.getElementById('showTime').value;
-            
-            if (isNaN(age) || !showTime) {
-                document.getElementById('result').textContent = "Please enter valid age and show time.";
-                return;
-            }
-            
-            let basePrice = 12;
-            let hour = parseInt(showTime.split(':')[0]);
-            
-            if (hour < 17) {
-                basePrice *= 0.8; // 20% off for matinee
-            }
-            if (age > 60) {
-                basePrice *= 0.7; // 30% off for seniors
-            } else if (age < 12) {
-                basePrice *= 0.6; // 40% off for children
-            }
-            
-            document.getElementById('result').textContent = `Final Ticket Price: $${basePrice.toFixed(2)}`;
-        }
-    </script>
+    
 </body>
 </html>

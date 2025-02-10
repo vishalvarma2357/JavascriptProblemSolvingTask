@@ -58,21 +58,5 @@
         <p class="result" id="result"></p>
     </div>
     
-    <script>
-        function trafficLightControl() {
-            let density = document.getElementById('trafficDensity').value;
-            let time;
-            
-            if (density === "Heavy Traffic") {
-                time = 60;
-            } else if (density === "Moderate Traffic") {
-                time = 40;
-            } else {
-                time = 20;
-            }
-            
-            document.getElementById('result').textContent = `Green Light Duration: ${time} seconds`;
-        }
-    </script>
 </body>
 </html>

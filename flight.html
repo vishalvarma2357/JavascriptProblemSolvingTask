@@ -62,26 +62,6 @@
         <p class="result" id="result"></p>
     </div>
     
-    <script>
-        function calculateFlightFare() {
-            let baseFare = 300;
-            let classType = document.getElementById('classType').value;
-            let luggageWeight = parseFloat(document.getElementById('luggageWeight').value) || 0;
-            let isStudent = document.getElementById('isStudent').checked;
-            let isSenior = document.getElementById('isSenior').checked;
-            
-            if (classType === "Business") baseFare += 200;
-            if (classType === "First") baseFare += 500;
-            
-            if (luggageWeight > 20) {
-                baseFare += Math.ceil((luggageWeight - 20) / 10) * 50;
-            }
-            
-            if (isStudent) baseFare *= 0.85; // 15% discount
-            else if (isSenior) baseFare *= 0.90; // 10% discount
-            
-            document.getElementById('result').textContent = `Final Ticket Price: $${baseFare.toFixed(2)}`;
-        }
-    </script>
+   
 </body>
 </html>

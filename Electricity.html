@@ -59,28 +59,6 @@
         <p class="result" id="result"></p>
     </div>
     
-    <script>
-        function calculateBill() {
-            let units = parseFloat(document.getElementById('units').value);
-            let timeOfDay = document.getElementById('timeOfDay').value;
-            
-            if (isNaN(units) || units < 0) {
-                document.getElementById('result').textContent = "Please enter a valid number of units.";
-                return;
-            }
-            
-            let rate = 5;
-            if (units > 100) rate = 4;
-            if (units > 300) rate = 3;
-            
-            let totalCost = units * rate;
-            
-            if (timeOfDay === "Peak") {
-                totalCost *= 1.10; // 10% extra charge during peak hours
-            }
-            
-            document.getElementById('result').textContent = `Total Bill: $${totalCost.toFixed(2)}`;
-        }
-    </script>
+    
 </body>
 </html>

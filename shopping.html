@@ -46,27 +46,6 @@
         <p id="result"></p>
     </div>
     
-    <script>
-        function calculateFinalAmount() {
-            let orderAmount = parseFloat(document.getElementById('orderAmount').value);
-            let discount = 0;
-            let shipping = 0;
-            
-            if (orderAmount > 1000) {
-                discount = 0.2;
-            } else if (orderAmount >= 500) {
-                discount = 0.1;
-            }
-            
-            let discountedPrice = orderAmount - (orderAmount * discount);
-            
-            if (discountedPrice < 50) {
-                shipping = 10;
-            }
-            
-            let finalAmount = discountedPrice + shipping;
-            document.getElementById('result').textContent = `Final Payable Amount: $${finalAmount.toFixed(2)}`;
-        }
-    </script>
+    
 </body>
 </html>
